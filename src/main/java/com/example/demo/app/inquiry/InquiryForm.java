@@ -17,7 +17,6 @@ public class InquiryForm {
 	private String contents;
 	
 	public InquiryForm() {
-	
 	}
 	
 	public String getName() {
