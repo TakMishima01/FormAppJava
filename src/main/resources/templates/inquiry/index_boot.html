@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Starter Template · Bootstrap</title>
+    <title th:text="${title}">Starter Template · Bootstrap</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
 
@@ -81,9 +81,30 @@
 <main role="main" class="container">
 
   <div class="starter-template">
-    <h1>Bootstrap starter template</h1>
+    <h1 th:text="${title}">Bootstrap starter template</h1>
     <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
   </div>
+  
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">email</th>
+      <th scope="col">contents</th>
+      <th scope="col">datetime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="inquiry : ${inquiryList}">
+      <th scope="row" th:text="${inquiry.id}">1</th>
+		<td th:text="${inquiry.name}"></td>
+		<td th:text="${inquiry.email}"></td>
+		<td th:text="${inquiry.contents}"></td>
+		<td th:text="${inquiry.created}"></td>
+    </tr>
+  </tbody>
+</table>
 
 </main><!-- /.container -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
