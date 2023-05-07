@@ -33,6 +33,21 @@ public class InquiryController {
 	public String index(Model model) {
 		List<Inquiry> list = inquiryService.getAll();
 		
+		Inquiry inquiry = new Inquiry();
+		inquiry.setId(4);
+		inquiry.setName("sample");
+		inquiry.setEmail("sample4@exsample.com");
+		inquiry.setContents("Hello");
+		
+		inquiryService.update(inquiry);
+		
+//		try {
+//			inquiryService.update(inquiry);
+//		} catch (InquiryNotFoundException e) {
+//			model.addAttribute("message", e);
+//			return "error/CustomPage";
+//		}
+		
 		model.addAttribute("inquiryList", list);
 		model.addAttribute("title", "Inquiry Index");
 		
@@ -85,4 +100,10 @@ public class InquiryController {
 		redirectAttributes.addFlashAttribute("complete", "Registerd!");
 		return "redirect:/inquiry/form";
 	}
+	
+//	@ExceptionHandler(InquiryNotFoundException.class)
+//		public String handleException(InquiryNotFoundException e, Model model) {
+//			model.addAttribute("message", e);
+//			return "error/CustomPage";
+//		}
 }

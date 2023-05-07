@@ -1,6 +1,7 @@
 package com.example.demo.app.survey;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,16 @@ public class SurveyController {
 	@Autowired
 	public SurveyController(SurveyService surveyService) {
 		this.surveyService = surveyService;
+	}
+	
+	@GetMapping
+	public String index(Model model) {
+		List<Survey> list = surveyService.getAll();
+		
+		model.addAttribute("surveyList", list);
+		model.addAttribute("title", "Survey Index");
+		
+		return "survey/index";
 	}
 	
 	@GetMapping("/form")
